@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{locals.title}}</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="{{locals.description}}">
+</head>
+
+<body>
+    <div class="container">
+    {{>header}}
+    <div class="main">
+    <div class="author">
+        <h1 class="author_heading">Hi, I am Raddy.</h1>
+        <p class="author_body">Web developer and content creator.</p>
+    </div>
+    
+    <img src="/img/hero-image.webp" alt="person looking out through window" class="hero-image" width="981" height="528">
+
+    <section class="article">
+    <h2 class="article_heading">Latest Posts</h2>
+    <ul class="article_ul">
+        <li><a href="#">
+            <span>Post Title</span>
+            <span class="article-list_date">Date</span>
+        </a></li>
+    </ul>
+    </section>
+    </div>
+    {{>footer}}
+    </div>
+</body>
+</html>
