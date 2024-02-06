@@ -1,12 +1,60 @@
 const express = require("express");
 const router = express.Router();
+const post = require("../models/post");
 
-router.get("/",(req,res)=>{
-    const locals = {
-        title:"1 blog",
-        description:"this is first blog"
+// function insertPostData(){
+//     post.insertMany([
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//         {
+//             title:"building a blog",
+//             body:"this is body text"
+//         },
+//     ])
+// }
+// insertPostData();
+
+router.get("/",async (req,res)=>{
+    try {
+        const locals = {
+title:"building a blog",
+body:"this is body text"
+        }
+        const data = await post.find();
+        console.log(data);
+        res.render("index",{locals,data});
+    } catch (error) {
+        
     }
-    res.render("index",locals);
+   
 });
+
+
 
 module.exports = router;

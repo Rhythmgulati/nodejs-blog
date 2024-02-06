@@ -22,10 +22,12 @@
     <section class="article">
     <h2 class="article_heading">Latest Posts</h2>
     <ul class="article_ul">
+         {{#each data}}
         <li><a href="#">
-            <span>Post Title</span>
-            <span class="article-list_date">Date</span>
+            <span>{{title}}</span>
+            <span class="article-list_date">{{body}}</span>
         </a></li>
+        {{/each}}
     </ul>
     </section>
     </div>
