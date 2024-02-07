@@ -44,15 +44,33 @@ router.get("/",async (req,res)=>{
     try {
         const locals = {
 title:"building a blog",
-body:"this is body text"
+body:"this is body text",
         }
         const data = await post.find();
-        console.log(data);
+        // console.log(data);
         res.render("index",{locals,data});
     } catch (error) {
         
     }
    
+});
+
+router.get('/post/:id',async (req,res)=>{
+      try {
+        const locals = {
+            title:"building a blog",
+            body:"this is body text",
+                    }
+        let _id = req.params.id;
+        console.log(_id);
+        console.log("hit")
+        const data = await post.findOne({_id});
+        console.log(data);
+        res.render("post",{locals,data});
+
+      } catch (error) {
+        console.log(error);
+      }
 });
 
 

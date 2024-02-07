@@ -15,9 +15,14 @@
     </nav>
    
    <div class="header_button">
-    <button class="searchBtn">
+    <form action="/search" method="POST" class="search_from">
+    <input type="search" name="searchterm" id="searchInput" placeholder="Search the Site..">
+    
+
+    <button class="searchBtn" type="submit">
         Search
     </button>
+      </form>
    </div>
 
 </header>  
