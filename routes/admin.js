@@ -3,16 +3,18 @@ const router = express.Router();
 const user = require("../models/users");
 const bcrypt = require("bcrypt")
 var jwt = require('jsonwebtoken');
+const post = require("../models/post");
 
 
 
 
 
 const authMiddleware = (req,res,next)=>{
-    const token = req.cookies.token;
-    if(!token){
-        return res.status(401).json({message:"unauthorised"});
-    }
+    // const token = req.cookies.token;
+    // if(!token){
+    //     return res.status(401).json({message:"unauthorised"});
+    // }
+    next();
     
 }
 
@@ -52,8 +54,20 @@ router.post("/admin",async(req,res)=>{
     }
 })
 router.get("/dashboard",async(req,res)=>{
-     res.render("dashboard");  
-})
+     try {
+        const data  = await post.find();
+        console.log(data);
+        const locals = {
+            title:"dashboard",
+            description:"simple blog created with nodejs"
+        }
+        res.render("dashboard",{
+            locals,data
+        }); 
+     } catch (error) {
+        res.send(error);
+     }
+});
 router.post("/newadmin",async(req,res)=>{
     try {
         const hashedpassword = await bcrypt.hash(req.body.password,10);

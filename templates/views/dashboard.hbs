@@ -8,7 +8,28 @@
 </head>
 <body>
     {{>header}}
-       <h1>dashboard</h1>
+        <div class="dashboard-container">
+       <div class="dashboard_header">
+       <h1>POSTS</h1>
+       <a href="/newpostadd">+ Add New</a>
+</div>
+
+       <ul class="admin-post">
+       {{#each data}}
+       <li class="dashboard_list">
+        <a href="/post/{{_id}}">
+       <p class="post_title">{{title}}</p>
+        </a>
+        <div class="admin-post-controls">
+            <a href="/edit-post/{{_id}}" class="btn-edit">Edit</a>
+            <form action="/delete-post/{{_id}}?_method-DELETE" method="POST">
+            <input type="submit" value="Delete">
+            </form>
+        </div>
+       </li>
+       {{/each}}
+       </ul>
+       </div>
     {{>footer}}
 </body>
 </html>

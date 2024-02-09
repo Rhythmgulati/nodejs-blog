@@ -50,7 +50,7 @@ body:"this is body text",
         // console.log(data);
         res.render("index",{locals,data});
     } catch (error) {
-        
+        res.send(error);
     }
    
 });
@@ -66,6 +66,7 @@ router.get('/post/:id',async (req,res)=>{
         console.log("hit")
         const data = await post.findOne({_id});
         console.log(data);
+
         res.render("post",{locals,data});
 
       } catch (error) {
