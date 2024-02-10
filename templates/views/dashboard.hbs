@@ -11,8 +11,8 @@
         <div class="dashboard-container">
        <div class="dashboard_header">
        <h1>POSTS</h1>
-       <a href="/newpostadd">+ Add New</a>
-</div>
+       <a href="/addpost">+ Add New</a>
+       </div>
 
        <ul class="admin-post">
        {{#each data}}
@@ -22,9 +22,10 @@
         </a>
         <div class="admin-post-controls">
             <a href="/edit-post/{{_id}}" class="btn-edit">Edit</a>
-            <form action="/delete-post/{{_id}}?_method-DELETE" method="POST">
-            <input type="submit" value="Delete">
-            </form>
+           <form action="/delete-post/{{_id}}?_method=DELETE" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>
         </div>
        </li>
        {{/each}}

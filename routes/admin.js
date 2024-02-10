@@ -5,9 +5,9 @@ const bcrypt = require("bcrypt")
 var jwt = require('jsonwebtoken');
 const post = require("../models/post");
 
+const methodOverride = require('method-override');
 
-
-
+router.use(methodOverride('_method'));
 
 const authMiddleware = (req,res,next)=>{
     // const token = req.cookies.token;
@@ -81,6 +81,33 @@ router.post("/newadmin",async(req,res)=>{
         if(error.code === 11000){
             res.status(409).json({message:'user already in use'});
         }
+        console.log(error);
+    }
+})
+
+router.get("/addpost",(req,res)=>{
+    res.render("addpost")
+})
+
+router.post("/addpost",async (req,res)=>{
+    try {
+        console.log(req.body);
+        const newpost = new post({
+         title:req.body.title,
+         body:req.body.body
+        });
+        await newpost.save();
+        res.redirect("/dashboard");
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.delete("/delete-post/:id",async(req,res)=>{
+    try {
+        await post.deleteOne({_id:req.params.id});
+        res.redirect("/dashboard");
+    } catch (error) {
         console.log(error);
     }
 })

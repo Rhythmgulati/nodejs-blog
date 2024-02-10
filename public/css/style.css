@@ -78,6 +78,9 @@ header{
     font-weight: 600;
     color: black;   
 }
+.loginBtn a{
+    text-decoration: none;
+}
 .header_button button:hover,.btn:hover{
     border: 2px solid black;
 }
@@ -101,9 +104,7 @@ header{
 .footer{
     text-align: center;
 }
-.searchInput{
-   
-}
+
 .author{
     padding: 20px 0;
     text-align: center;
@@ -114,11 +115,17 @@ header{
 }
 .article_ul{
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
     font-size: 1.13rem;
     display: flex;
     flex-direction: column;
+    height: 500px;
+    overflow-y: scroll;
+}
+.article_ul::-webkit-scrollbar{
+    scroll-behavior: smooth;
+    scrollbar-color: grey;
 }
 .article-list_date{
     font-size: 1rem;
@@ -152,12 +159,13 @@ header{
 .article_ul li:not(:last-child){
     border-bottom: 1px solid grey;
 }
-.article_ul li:hover{
+/* .article_ul li:hover{
     filter:none;
 }
 .article_ul:hover li{
     filter: blur(3px);
-}
+} */
+
 .article_ul:hover li:hover {
     filter: none;
   }
@@ -166,7 +174,6 @@ header{
 }
 .admin_main{
     text-align: center;
-    
     border: 1px solid black;
     width: 80%;
     margin: auto;
@@ -174,7 +181,7 @@ header{
 }
 .admin_main form{
     display: flex;
-    height: 200px;
+    /* height: 200px; */
     flex-direction: column;
     width: 50%;
     margin: auto;
@@ -190,19 +197,17 @@ header{
 }
 .btn{
     margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-
-
 .dashboard-container{
-  height: 500px;
+  /* height: 500px; */
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
   text-align: center;
-  overflow-y: scroll;
 }
+
 .dashboard_header{
     display: flex;
     align-items: center;
@@ -218,6 +223,10 @@ header{
    background-color: #cacaca;
    justify-content: space-between;
    border-radius: 4px;
+}
+.admin-post{
+    overflow-y: scroll;
+    height: 500px;
 }
 .post_title{
     padding: 0 10px;
